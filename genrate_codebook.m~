@@ -1,0 +1,29 @@
+function [ features, varargout ] = genreate_codebook( I )
+%GENREATE_CODEBOOK Summary of this function goes here
+%   Detailed explanation goes here
+
+gray = rgb2gray(I);
+
+grid_size = 10;
+[nr, nc] = size(gray);
+
+edges = edges(gray);
+edge_distance = 4;
+se = strel('disk', edge_distance, 0);
+close_to_edge = imdilate(edges, se);
+
+feature_points = gray;
+shapeInserter = vision.ShapeInserter('Shape','Circles',
+'BorderColor',...
+                                    'Custom','CustomBorderColor',yellow);
+for r = 1:grid_size:nr
+    for c = 1:grid_size:nc
+        if (close_to_edge(r, c))
+            %genreate feature
+            
+        end
+    end
+end
+features = cell(1);
+end
+
