@@ -4,7 +4,7 @@ function [ features, varargout ] = generate_codebook( I )
 
 gray = rgb2gray(I);
 
-grid_size = 30;
+grid_size = 20;
 [nr, nc] = size(gray);
 
 edge_map = edge(gray, 'log');
