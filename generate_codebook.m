@@ -4,7 +4,7 @@ function [ features, varargout ] = generate_codebook( I )
 
 gray = rgb2gray(I);
 
-grid_size = 20;
+grid_size = 10;
 [nr, nc] = size(gray);
 
 edge_map = edge(gray, 'log');
@@ -21,7 +21,7 @@ inds = sub2ind([nr, nc], Rs(:), Cs(:));
 inds(close_to_edge(inds) == 0) = [];
 [Rs, Cs] = ind2sub([nr, nc], inds);
 feature_locs = step(shapeInserter, feature_locs,...
-                    int32([Cs, Rs, repmat(10, length(Cs), 1)]));
+                    int32([Cs, Rs, repmat(5, length(Cs), 1)]));
 %{
 for r = 1:grid_size:nr
     for c = 1:grid_size:nc
