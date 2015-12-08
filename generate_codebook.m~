@@ -8,7 +8,6 @@ grid_size = 10;
 [nr, nc] = size(gray);
 
 edge_map = edge(gray, 'log');
-figure('Name', 'Edges'); imagesc(edge_map); axis image;
 edge_distance = 6;
 se = strel('disk', edge_distance, 0);
 close_to_edge = imdilate(edge_map, se);
@@ -16,13 +15,10 @@ close_to_edge = imdilate(edge_map, se);
 
 [Rs, Cs] = meshgrid(1:grid_size:nr, 1:grid_size:nc);
 
-
+if (nargin > 2)
+    mask = vararg{1};
 inds = sub2ind([nr, nc], Rs(:), Cs(:));
 inds(close_to_edge(inds) == 0) = [];
-if (nargin > 2)
-    mask = varargin{1};
-    inds(mask(inds) == 0) = [];
-end
 [Rs, Cs] = ind2sub([nr, nc], inds);
 
 features = generate_sc(edge_map, [Rs, Cs], window_radius);

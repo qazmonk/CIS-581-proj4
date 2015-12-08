@@ -4,16 +4,16 @@ function [ sc ] = generate_sc( edges, pts, window_radius)
 
 %preliminary calculations for the shape contexts
 num_pts = size(pts, 1);
-sc = zeros(12, 12, num_pts);
+sc = zeros(5, 12, num_pts);
 angle_width = 2*pi/12;
-dist_width = log(window_radius)/12;
+dist_width = log(window_radius)/5;
 
 windows = get_windows(edges, pts, window_radius);
 %loop over window caluclating distance and angle bins
 for r = -window_radius:window_radius
     for c = -window_radius:window_radius
         d_bin = max(1, ceil(1/2*log(r*r+c*c)/dist_width));
-        if (d_bin <= 12)
+        if (d_bin <= 5)
             a_bin = ceil((atan2(r, c)+pi)/angle_width);
             r_win = r + window_radius+1;
             c_win = c + window_radius+1;
