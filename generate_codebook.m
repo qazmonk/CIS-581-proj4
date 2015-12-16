@@ -16,7 +16,7 @@ close_to_edge = imdilate(edge_map, se);
 
 [Rs, Cs] = meshgrid(1:grid_size:nr, 1:grid_size:nc);
 
-
+ 
 inds = sub2ind([nr, nc], Rs(:), Cs(:));
 inds(close_to_edge(inds) == 0) = [];
 if (nargin > 2)
