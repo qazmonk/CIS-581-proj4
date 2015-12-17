@@ -9,7 +9,7 @@ max_ind = 1;
 
 
 for i = 1:N
-    sample = datasample(1:num_pairs, 8, 'Replace', false);
+    sample = datasample(1:num_pairs, 5, 'Replace', false);
     [a1_x,ax_x,ay_x,w_x] = est_tps(pts1(sample, :), pts2(sample, 1));
     [a1_y,ax_y,ay_y,w_y] = est_tps(pts1(sample, :), pts2(sample, 2));
 
@@ -23,7 +23,7 @@ for i = 1:N
     end
     if (length(votes{i, 1}) > length(votes{max_ind, 1}))
         max_ind = i;
-        if (length(votes{i, 1}) > 0.7*num_pairs)
+        if (length(votes{i, 1}) > 0.9*num_pairs)
             break;
         end
     end
