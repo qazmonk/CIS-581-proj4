@@ -4,7 +4,7 @@ VISUALS = false;
 grid_size = 8;
 face = imread('poses_scaled/Nate/1202151736b.jpg');
 mask = imread('poses_scaled/Nate/1202151736b-mask.png');
-video = 'easy2';
+video = 'easy3';
 [face_nr, face_nc, ~] = size(face);
 frame_names = dir(sprintf('%s/frame*.png', video));
 [face_xs, face_ys] = meshgrid(1:grid_size:face_nc, 1:grid_size: ...
@@ -107,7 +107,7 @@ for fidx = 1:length(frame_names)
     replaced = replace_face(frame, face, mask, [max_x max_y], ...
                             center, o2o_frame_points, ...
                             o2o_face_points);
-    output_name = sprintf('output2/frame-%03d.png', fidx);
+    output_name = sprintf('output3/frame-%03d.png', fidx);
     fprintf('writing to %s\n', output_name);
     imwrite(replaced, output_name);
    
